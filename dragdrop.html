@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Drag & Drop Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;
+                font-size: 0.8em;
+            }
+
+            #mainContainer {
+                width: 600px;
+                margin: 0 auto;
+                margin-top: 10px;
+                border: 1px solid #000;
+                padding: 2px;
+            }
+            
+            #capitals {
+                width: 200px;
+                float: left;
+                border: 1px solid #000;
+                background-color: #E2EBED;
+                padding: 3px;
+                height: 400px;
+            }
+            
+            #countries{
+                width:300px;
+                float:right;
+                margin:2px;
+                height:400px;
+            }
+
+            .dragableBox,.dragableBoxRight{
+                width:80px;
+                height:20px;
+                border:1px solid #000;
+                background-color:#FFF;		
+                margin-bottom:5px;
+                padding:10px;
+                font-weight:bold;
+                text-align:center;
+            }
+
+            div.dragableBoxRight{
+                height:65px;
+                width:110px;
+                float:left;
+                margin-right:5px;
+                padding:5px;
+                background-color:#E2EBED;
+            }
+
+            .dropBox{
+                width:190px;
+                border:1px solid #000;
+                background-color:#E2EBED;
+                height:400px;
+                margin-bottom:10px;
+                padding:3px;
+                overflow:auto;
+            }
+
+            a{
+                color:#F00;
+            }
+
+            .clear{
+                clear:both;
+            }
+
+            img{
+                border:0px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="mainContainer">
+            <h2>Drag and drop - demo 3</h2>
+            <div class="konaBody">
+                This is an example of how you can use this script to create your own "drag'n drop applications".
+            </div>
+            <div id="capitals">
+                <p><b>Capitals</b></p>
+                <div id="dropContent">
+                    <div class="dragableBox" id="box1">Oslo</div>
+                    <div class="dragableBox" id="box2">Stockholm</div>
+                    <div class="dragableBox" id="box3">Washington</div>
+                    <div class="dragableBox" id="box4">Copenhagen</div>
+                    <div class="dragableBox" id="box5">Seoul</div>
+                    <div class="dragableBox" id="box6">Rome</div>
+                    <div class="dragableBox" id="box7">Madrid</div>
+                </div>
+            </div>
+            <div id="countries">
+                <div id="box106" class="dragableBoxRight">Italy</div>
+                <div id="box107" class="dragableBoxRight">Spain</div>
+                <div id="box101" class="dragableBoxRight">Norway</div>
+                <div id="box104" class="dragableBoxRight">Denmark</div>
+                <div id="box105" class="dragableBoxRight">South Korea</div>
+                <div id="box102" class="dragableBoxRight">Sweden</div>
+                <div id="box103" class="dragableBoxRight">United States</div>
+
+
+            </div>
+            <div class="clear"></div>
+            <div class="konaBody"></div>
+        </div>
+
+        <div id="debug"></div>
+        <script type="text/javascript" src="js/dragdrop.js"></script>
+    </body>
+</html>

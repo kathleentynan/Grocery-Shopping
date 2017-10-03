@@ -28,6 +28,7 @@ and open the template in the editor.
     <script>
         var x = 0;
         var z = -1;
+        var margin = 100;
         function allowDrop(ev) {
             ev.preventDefault();
         }
@@ -43,10 +44,12 @@ and open the template in the editor.
             var nodeCopy = document.getElementById(data).cloneNode(true);
             nodeCopy.id = "newId" + x;
             x++;
+            nodeCopy.style.marginLeft = margin + 'px';
+            margin += 20;
+            nodeCopy.style.marginBottom = '-256px'
             nodeCopy.style.zIndex = z;
-            z++;
-            nodeCopy.width *= 0.5;
-            nodeCopy.height *= 0.5;
+            nodeCopy.width *= 0.4;
+            nodeCopy.height *= 0.4;
             ev.target.appendChild(nodeCopy);
 
         }
@@ -65,8 +68,7 @@ and open the template in the editor.
                                 <p class="fa fa-angle-right"></p>
                             </div>
                             <div class="scroll-images scrollable-x">
-                                <img id="bread" src="images/bread1.jpg" alt="Image 1" draggable="true" ondragstart="drag(event)" style="position: relative;
-                z-index: -1;">
+                                <img id="bread" src="images/bread1.jpg" alt="Image 1" draggable="true" ondragstart="drag(event)" style="position: relative;">
                                 <img src="images/milk.jpg" alt="Image 2">
                                 <img src="images/chips1.jpg" alt="Image 3">
                                 <img src="images/cheese.jpg" alt="Image 4">

@@ -26,7 +26,7 @@
 
     var AISLEENUM = {
         DAIRY: 0,
-        CANNEDBOXED: 1,
+        BEVERAGES: 1,
         MEAT: 2,
         BREAD: 3,
         PRODUCE: 4
@@ -40,13 +40,13 @@
         value: AISLEENUM.DAIRY,
         label: "Dairy",
     };
-    var cannedBoxed = {
+    var beverages = {
         selected: false,
         x: 250,
         y: 300,
         color: normalColor,
-        value: AISLEENUM.CANNEDBOXED,
-        label: "Canned & Boxed Food",
+        value: AISLEENUM.BEVERAGES,
+        label: "Beverages",
         
     };
     var meat = {
@@ -85,7 +85,7 @@
     };
 
     var aisles = [];
-    aisles.push(dairy, cannedBoxed, meat, bread, produce);
+    aisles.push(dairy, beverages, meat, bread, produce);
 
     var img = new Image();
     img.src = "images/cart/cartLeft.png";
@@ -153,10 +153,10 @@
                     //meat
                     meat.selected = true;
                     meat.color = selectedColor;
-                } else if (y - dy <= cannedBoxed.y + isleHeight && y - dy >= cannedBoxed.y && x + r > cannedBoxed.x && x < cannedBoxed.x + isleWidth) {
-                    //cannedBoxed
-                    cannedBoxed.selected = true;
-                    cannedBoxed.color = selectedColor;
+                } else if (y - dy <= beverages.y + isleHeight && y - dy >= beverages.y && x + r > beverages.x && x < beverages.x + isleWidth) {
+                    //beverages
+                    beverages.selected = true;
+                    beverages.color = selectedColor;
                 } else if (y - dy <= dairy.y + isleHeight && y - dy >= dairy.y && x + r > dairy.x && x < dairy.x + isleWidth) {
                     //dairy
                     dairy.selected = true;
@@ -188,10 +188,10 @@
                     //meat
                     meat.selected = true;
                     meat.color = selectedColor;
-                } else if (y + r + dy >= cannedBoxed.y && y + r + dy <= cannedBoxed.y + isleHeight && x + r > cannedBoxed.x && x < cannedBoxed.x + isleWidth) {
-                    //cannedBoxed
-                    cannedBoxed.selected = true;
-                    cannedBoxed.color = selectedColor;
+                } else if (y + r + dy >= beverages.y && y + r + dy <= beverages.y + isleHeight && x + r > beverages.x && x < beverages.x + isleWidth) {
+                    //beverages
+                    beverages.selected = true;
+                    beverages.color = selectedColor;
                 } else if (y + r + dy >= dairy.y && y + r + dy <= dairy.y + isleHeight && x + r > dairy.x && x < dairy.x + isleWidth) { 
                     //dairy
                     dairy.selected = true;
@@ -223,10 +223,10 @@
                     //meat
                     meat.selected = true;
                     meat.color = selectedColor;
-                } else if (x-dx <= cannedBoxed.x + isleWidth && x-dx >= cannedBoxed.x && y + r > cannedBoxed.y && y < cannedBoxed.y + isleHeight) {
-                    //cannedBoxed
-                    cannedBoxed.selected = true;
-                    cannedBoxed.color = selectedColor;
+                } else if (x-dx <= beverages.x + isleWidth && x-dx >= beverages.x && y + r > beverages.y && y < beverages.y + isleHeight) {
+                    //beverages
+                    beverages.selected = true;
+                    beverages.color = selectedColor;
                 } else if (x-dx <= dairy.x + isleWidth && x-dx >= dairy.x && y + r > dairy.y && y < dairy.y + isleHeight) {
                     //dairy
                     dairy.selected = true;
@@ -258,10 +258,10 @@
                     //meat
                     meat.selected = true;
                     meat.color = selectedColor;
-                } else if (x + r + dx >= cannedBoxed.x && x + r + dx <= cannedBoxed.x + isleWidth && y + r > cannedBoxed.y && y < cannedBoxed.y + isleHeight) {
-                    //cannedBoxed
-                    cannedBoxed.selected = true;
-                    cannedBoxed.color = selectedColor;
+                } else if (x + r + dx >= beverages.x && x + r + dx <= beverages.x + isleWidth && y + r > beverages.y && y < beverages.y + isleHeight) {
+                    //beverages
+                    beverages.selected = true;
+                    beverages.color = selectedColor;
                 } else if (x + r + dx >= dairy.x && x + r + dx <= dairy.x + isleWidth && y + r > dairy.y && y < dairy.y + isleHeight) {
                     //dairy
                     dairy.selected = true;

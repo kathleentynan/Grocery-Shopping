@@ -41,6 +41,7 @@
     var margin = 100;
     var list = "SHOPPING LIST:<br>";
     var array = new Array();
+    var array2 = new Array();
     var id;
     function allowDrop(ev) {
         ev.preventDefault();
@@ -118,7 +119,7 @@
             cart.style.width = '512px';
             cart.style.heigt = '512px';
             for(i = 0; i < array.length; i++){
-            //    document.getElementById("newId"+i).remove();
+                document.getElementById("newId"+i).remove();
             }
         }
 

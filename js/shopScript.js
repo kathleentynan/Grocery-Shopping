@@ -5,10 +5,7 @@
     var dy = 15;
     var x = 930;
     var y = 500;
-    /*if(localStorage.getItem("cartX")!=null)
-        x = localStorage.getItem("cartX");
-    if(localStorage.getItem("cartY")!=null)
-        y = localStorage.getItem("cartY")*/
+
     var r = 85;
     var WIDTH = 1100;
     var HEIGHT = 600;
@@ -18,6 +15,23 @@
 
     if(localStorage.getItem("direction")!=null)
         cartDirection = localStorage.getItem("direction")
+
+    if(localStorage.getItem("cartX") && cartDirection.localeCompare("right")==0)
+        x = parseInt(localStorage.getItem("cartX"))-130;
+    if(localStorage.getItem("cartY") && cartDirection.localeCompare("right")==0)
+        y = parseInt(localStorage.getItem("cartY"))-5;
+    if(localStorage.getItem("cartX") && cartDirection.localeCompare("up")==0)
+        x = parseInt(localStorage.getItem("cartX"))-80;
+    if(localStorage.getItem("cartY") && cartDirection.localeCompare("up")==0)
+        y = parseInt(localStorage.getItem("cartY"))+85;
+    if(localStorage.getItem("cartX") && cartDirection.localeCompare("left")==0)
+        x = parseInt(localStorage.getItem("cartX"))+60;
+    if(localStorage.getItem("cartY") && cartDirection.localeCompare("left")==0)
+        y = parseInt(localStorage.getItem("cartY"))-60;
+    if(localStorage.getItem("cartX") && cartDirection.localeCompare("down")==0)
+        x = parseInt(localStorage.getItem("cartX"))-70;
+    if(localStorage.getItem("cartY") && cartDirection.localeCompare("down")==0)
+        y = parseInt(localStorage.getItem("cartY"))-210;
     
     var isleWidth = 80;
     var isleHeight = 300;

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Checkout page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa|Raleway" rel="stylesheet">
+        <link rel="stylesheet" href="css/materialize.min.css" type="text/css">
+    </head>
+    <body style="padding-left: 20px; padding-right: 30px">
+        <h1 class="left-align" style="font-family: 'Comfortaa', cursive;">Grocery Online</h1>
+        <div class="right">
+            <a class="waves-effect waves-light btn blue" style="border-radius: 8px;" href="index.html">
+                <i class="material-icons right">home</i>Back to Home</a></div>
+        <h3 class="left-align" style="font-family: 'Comfortaa', cursive;">Checkout</h3>
+        <div class="divider"></div>
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h5 style="font-family: 'Raleway', sans-serif;">SHOPPING BASKET</h5>
+                            <table class="striped">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Quantity</th>
+                                        <th>Total Price</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>Bread</td>
+                                        <td>5</td>
+                                        <td>$25.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Milk</td>
+                                        <td>1</td>
+                                        <td>$10.50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Lays Chips</td>
+                                        <td>2</td>
+                                        <td>$15.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Total amount</b></td>
+                                        <td></td>
+                                        <td>$50.50</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td>
+                            <div class="center" id="cashier1"><img src="images/Waving_Speaking_Cashier.gif"></div>
+                            <div class="center" id="cashier2" hidden="true"><img src="images/Nice_Day_Cashier.gif"></div><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><br/>
+        <div class="center">
+            <a class="waves-effect waves-light btn green" style="border-radius: 8px;" onclick="showNextCashier()">
+                <i class="material-icons left">local_grocery_store</i>Proceed to Checkout</a></div>            
+        <br/>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="js/materialize.min.js"></script>
+        <script>
+                function showNextCashier() {
+                    $('#cashier1').toggle();
+                    $('#cashier2').toggle();
+                }
+        </script>
+                
+    </body>
+</html>

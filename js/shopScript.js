@@ -40,10 +40,11 @@
 
     var AISLEENUM = {
         DAIRY: 0,
-        CANNEDBOXED: 1,
+        BEVERAGES: 1,
         MEAT: 2,
         BREAD: 3,
-        PRODUCE: 4
+        PRODUCE: 4,
+        CHECKOUT: 5
     };
   
     var dairy = {
@@ -53,15 +54,16 @@
         color: normalColor,
         value: AISLEENUM.DAIRY,
         label: "Dairy",
+        ref: 'dragdrop.html'
     };
-    var cannedBoxed = {
+    var beverages = {
         selected: false,
         x: 250,
         y: 300,
         color: normalColor,
-        value: AISLEENUM.CANNEDBOXED,
-        label: "Canned & Boxed Food",
-        
+        value: AISLEENUM.BEVERAGES,
+        label: "Beverages",
+        ref: 'dragdrop.html'
     };
     var meat = {
         selected: false,
@@ -70,7 +72,7 @@
         color: normalColor,
         value: AISLEENUM.MEAT,
         label: "Meat",
-        
+        ref: 'dragdrop.html'
     };
     var bread = {
         selected: false,
@@ -79,7 +81,7 @@
         color: normalColor,
         value: AISLEENUM.BREAD,
         label: "Bread",
-        
+        ref: 'dragdrop.html'
     };
     var produce = {
         selected: false,
@@ -88,18 +90,20 @@
         color: normalColor,
         value: AISLEENUM.PRODUCE,
         label: "Produce",
-        
+        ref: 'dragdrop.html'
     };
     var checkout = {
         selected: false,
         x: 0,
         y: 545,
         color: normalColor,
-        
+        value: AISLEENUM.CHECKOUT,
+        label: "Checkout",
+        ref: 'checkout.html'
     };
 
     var aisles = [];
-    aisles.push(dairy, cannedBoxed, meat, bread, produce);
+    aisles.push(dairy, beverages, meat, bread, produce, checkout);
 
     var img = new Image();
     img.src = "images/cart/cartLeft.png";
@@ -167,14 +171,17 @@
                     //meat
                     meat.selected = true;
                     meat.color = selectedColor;
-                } else if (y - dy <= cannedBoxed.y + isleHeight && y - dy >= cannedBoxed.y && x + r > cannedBoxed.x && x < cannedBoxed.x + isleWidth) {
-                    //cannedBoxed
-                    cannedBoxed.selected = true;
-                    cannedBoxed.color = selectedColor;
+                } else if (y - dy <= beverages.y + isleHeight && y - dy >= beverages.y && x + r > beverages.x && x < beverages.x + isleWidth) {
+                    //beverages
+                    beverages.selected = true;
+                    beverages.color = selectedColor;
                 } else if (y - dy <= dairy.y + isleHeight && y - dy >= dairy.y && x + r > dairy.x && x < dairy.x + isleWidth) {
                     //dairy
                     dairy.selected = true;
                     dairy.color = selectedColor;
+                } else if (y - dy <= checkout.y + isleHeight && y - dy >= checkout.y && x + r > checkout.x && x < checkout.x + isleWidth) {
+                    checkout.selected = true;
+                    checkout.color = selectedColor;
                 } else {
                     y -= dy;
                     
@@ -202,14 +209,17 @@
                     //meat
                     meat.selected = true;
                     meat.color = selectedColor;
-                } else if (y + r + dy >= cannedBoxed.y && y + r + dy <= cannedBoxed.y + isleHeight && x + r > cannedBoxed.x && x < cannedBoxed.x + isleWidth) {
-                    //cannedBoxed
-                    cannedBoxed.selected = true;
-                    cannedBoxed.color = selectedColor;
+                } else if (y + r + dy >= beverages.y && y + r + dy <= beverages.y + isleHeight && x + r > beverages.x && x < beverages.x + isleWidth) {
+                    //beverages
+                    beverages.selected = true;
+                    beverages.color = selectedColor;
                 } else if (y + r + dy >= dairy.y && y + r + dy <= dairy.y + isleHeight && x + r > dairy.x && x < dairy.x + isleWidth) { 
                     //dairy
                     dairy.selected = true;
                     dairy.color = selectedColor;
+                } else if (y + r + dy >= checkout.y && y + r + dy <= checkout.y + isleHeight && x + r > checkout.x && x < checkout.x + isleWidth) {
+                    checkout.selected = true;
+                    checkout.color = selectedColor;
                 } else {
                     y += dy;
                     
@@ -237,14 +247,17 @@
                     //meat
                     meat.selected = true;
                     meat.color = selectedColor;
-                } else if (x-dx <= cannedBoxed.x + isleWidth && x-dx >= cannedBoxed.x && y + r > cannedBoxed.y && y < cannedBoxed.y + isleHeight) {
-                    //cannedBoxed
-                    cannedBoxed.selected = true;
-                    cannedBoxed.color = selectedColor;
+                } else if (x-dx <= beverages.x + isleWidth && x-dx >= beverages.x && y + r > beverages.y && y < beverages.y + isleHeight) {
+                    //beverages
+                    beverages.selected = true;
+                    beverages.color = selectedColor;
                 } else if (x-dx <= dairy.x + isleWidth && x-dx >= dairy.x && y + r > dairy.y && y < dairy.y + isleHeight) {
                     //dairy
                     dairy.selected = true;
                     dairy.color = selectedColor;
+                } else if (x-dx <= checkout.x + isleWidth && x-dx >= checkout.x && y + r > checkout.y && y < checkout.y + isleHeight) {
+                    checkout.selected = true;
+                    checkout.color = selectedColor;
                 } else {
                     x -= dx;
                     
@@ -272,15 +285,19 @@
                     //meat
                     meat.selected = true;
                     meat.color = selectedColor;
-                } else if (x + r + dx >= cannedBoxed.x && x + r + dx <= cannedBoxed.x + isleWidth && y + r > cannedBoxed.y && y < cannedBoxed.y + isleHeight) {
-                    //cannedBoxed
-                    cannedBoxed.selected = true;
-                    cannedBoxed.color = selectedColor;
+                } else if (x + r + dx >= beverages.x && x + r + dx <= beverages.x + isleWidth && y + r > beverages.y && y < beverages.y + isleHeight) {
+                    //beverages
+                    beverages.selected = true;
+                    beverages.color = selectedColor;
                 } else if (x + r + dx >= dairy.x && x + r + dx <= dairy.x + isleWidth && y + r > dairy.y && y < dairy.y + isleHeight) {
                     //dairy
                     dairy.selected = true;
                     dairy.color = selectedColor;
-                } else {
+                } else if(x + r + dx >= checkout.x && x + r + dx <= checkout.x + isleWidth && y + r > checkout.y && y < checkout.y + isleHeight) {
+                    //checkout
+                    checkout.selected = true;
+                    checkout.color = selectedColor;
+                }else {
                     x+=dx;
                     
                     
@@ -322,7 +339,7 @@
                 localStorage.setItem("cartY",y);
                 localStorage.setItem("cartX",x);
                 localStorage.setItem("direction",cartDirection);
-                window.location.href = 'dragdrop.html';
+                window.location.href = element.ref;
             }
         });
     });

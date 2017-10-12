@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <style>
         #div1 {
             width: 512px;
@@ -51,15 +52,17 @@
     }
 
     function remove(id){
-        count--;
-        document.getElementById("newId"+id).remove();
         delete array[id];
-        list = "";
-        for(y = 0; y<array.length+1; y++){
-            if(array[y].localeCompare('undefined')!= 0)
-                list = list + array[y];
-        }
-
+        count --;
+        margin = margin -20;
+        document.getElementById("newId"+id).remove();
+        array.toString = function() {
+            return this.join('');
+        };
+        document.getElementById("text").innerHTML = array.toString();
+    }
+    function goBack(){
+        window.location.href = 'shopping.html';
     }
 
 
@@ -105,17 +108,18 @@
         nodeCopy.style.height = '256px';
         ev.target.appendChild(nodeCopy);
         var cart = document.getElementById("div1");
-        document.getElementById("text").innerHTML = list;
+        array.toString = function() {
+            return this.join('');
+        };
+        document.getElementById("text").innerHTML = array.toString();
         if(count>=5) {
             margin = 100;
             cart.style.backgroundImage = "url(images/shopping_cart2.png)";
             cart.style.width = '512px';
             cart.style.heigt = '512px';
             for(i = 0; i < array.length; i++){
-                document.getElementById("newId"+i).remove();
+            //    document.getElementById("newId"+i).remove();
             }
-
-
         }
 
     }
@@ -123,7 +127,7 @@
 <body>
 
 <div class="container">
-
+    <button onclick="goBack()">GO BACK</button>
     <div class="row">
         <div class="col s8 offset-s6">
             <!-- Slider -->

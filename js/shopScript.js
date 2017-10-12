@@ -5,12 +5,19 @@
     var dy = 15;
     var x = 930;
     var y = 500;
+    /*if(localStorage.getItem("cartX")!=null)
+        x = localStorage.getItem("cartX");
+    if(localStorage.getItem("cartY")!=null)
+        y = localStorage.getItem("cartY")*/
     var r = 85;
     var WIDTH = 1100;
     var HEIGHT = 600;
     var selectedColor = "red";
     var normalColor = "#daa671";
     var cartDirection = "left";
+
+    if(localStorage.getItem("direction")!=null)
+        cartDirection = localStorage.getItem("direction")
     
     var isleWidth = 80;
     var isleHeight = 300;
@@ -298,6 +305,9 @@
         console.log(x, y);
         aisles.forEach(function(element){
             if (element.selected && (y > element.y && y < element.y + isleHeight && x > element.x && x <  element.x + isleWidth)) {
+                localStorage.setItem("cartY",y);
+                localStorage.setItem("cartX",x);
+                localStorage.setItem("direction",cartDirection);
                 window.location.href = 'dragdrop.html';
             }
         });

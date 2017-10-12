@@ -21,6 +21,12 @@ and open the template in the editor.
                 -o-background-size: cover;
                 background-size: cover;
             }
+            #div2 {
+                float: left;
+                width: 200px;
+                margin-left: -200px;
+                background-color: #FFA;
+            }
 
 
         </style>
@@ -34,24 +40,69 @@ and open the template in the editor.
     </head>
     <script>
         var x = 0;
+        var count = 0;
         var z = -1;
         var margin = 100;
+        var list = "SHOPPING LIST:<br>";
+        var array = new Array();
+        var id;
         function allowDrop(ev) {
             ev.preventDefault();
         }
 
         function drag(ev) {
-            ev.dataTransfer.setData("text", ev.target.id);
+            ev.dataTransfer.setData("text", ev.currentTarget.id);
+            id = ev.currentTarget.id;
         }
+
+        function remove(id){
+            count--;
+            document.getElementById("newId"+id).remove();
+            delete array[id];
+            list = "";
+            for(y = 0; y<array.length+1; y++){
+                if(array[y].localeCompare('undefined')!= 0)
+                    list = list + array[y];
+            }
+
+        }
+
 
         function drop(ev) {
             ev.preventDefault();
             var data = ev.dataTransfer.getData("text");
-            //ev.target.appendChild(document.getElementById(data));
             var nodeCopy = document.getElementById(data).cloneNode(true);
             nodeCopy.id = "newId" + x;
-            x++;
+
+            if(id.localeCompare('bread')==0)
+                array.push('-Bread     <button type="button" onclick="remove('+x+')"> Remove</button> <br>');
+            else if(id.localeCompare('milk')==0)
+                array.push('-Milk     <button type="button" onclick="remove('+x+')"> Remove</button> <br>');
+            else if(id.localeCompare('chips')==0)
+                array.push('-Chips     <button type="button" onclick="remove('+x+')"> Remove</button> <br>');
+            else if(id.localeCompare('cheese')==0)
+                array.push('-Cheese     <button type="button" onclick="remove('+x+')"> Remove</button> <br>');
+            else if(id.localeCompare('meat')==0)
+                array.push('-Meat     <button type="button" onclick="remove('+x+')"> Remove</button> <br>');
+            else if(id.localeCompare('wraps')==0)
+                array.push('-Wraps     <button type="button" onclick="remove('+x+')"> Remove</button> <br>');
+            else if(id.localeCompare('spinach')==0)
+                array.push('-Spinach     <button type="button" onclick="remove('+x+')"> Remove</button> <br>');
+            else if(id.localeCompare('eggs')==0)
+                array.push('-Eggs     <button type="button" onclick="remove('+x+')"> Remove</button> <br>');
+            else if(id.localeCompare('cider')==0)
+                array.push('-Cider     <button type="button" onclick="remove('+x+')"> Remove</button> <br>');
+            else if(id.localeCompare('juice')==0)
+                array.push('-Juice     <button type="button" onclick="remove('+x+')"> Remove</button> <br>');
+
+            for(y = array.length-1; y<array.length; y++){
+                if(array[y].localeCompare('undefined')!== 0)
+                    list = list + array[y];
+            }
+
             nodeCopy.style.marginLeft = margin + 'px';
+            x++;
+            count++;
             margin += 20;
             nodeCopy.style.marginBottom = '-256px'
             nodeCopy.style.zIndex = z;
@@ -59,16 +110,25 @@ and open the template in the editor.
             nodeCopy.style.height = '256px';
             ev.target.appendChild(nodeCopy);
             var cart = document.getElementById("div1");
-            if(x>=5) {
+            document.getElementById("text").innerHTML = list;
+            if(count>=5) {
+                margin = 100;
                 cart.style.backgroundImage = "url(images/shopping_cart2.png)";
                 cart.style.width = '512px';
                 cart.style.heigt = '512px';
+                for(i = 0; i < array.length; i++){
+                    document.getElementById("newId"+i).remove();
+                }
+
+
             }
 
         }
     </script>
     <body>
+
         <div class="container">
+
             <div class="row">
                 <div class="col s8 offset-s6">
                     <!-- Slider -->
@@ -120,6 +180,10 @@ and open the template in the editor.
                             </div>
                         </div>
                     </div>
+                </div>
+                <div id="div2" class="col s1">
+
+                    <p id="text"> </p>
                 </div>
             </div>
         </div>

@@ -7,13 +7,13 @@
     var y = 500;
 
     var r = 85;
-    var WIDTH = 1100;
-    var HEIGHT = 600;
+    var WIDTH = 1200;
+    var HEIGHT = 650;
     var selectedColor = "red";
     var normalColor = "#daa671";
     var cartDirection = "left";
 
-    if(localStorage.getItem("direction")!=null)
+    /*if(localStorage.getItem("direction")!=null)
         cartDirection = localStorage.getItem("direction")
 
     if(localStorage.getItem("cartX") && cartDirection.localeCompare("right")==0)
@@ -31,12 +31,12 @@
     if(localStorage.getItem("cartX") && cartDirection.localeCompare("down")==0)
         x = parseInt(localStorage.getItem("cartX"))-70;
     if(localStorage.getItem("cartY") && cartDirection.localeCompare("down")==0)
-        y = parseInt(localStorage.getItem("cartY"))-210;
+        y = parseInt(localStorage.getItem("cartY"))-210;*/
     
-    var isleWidth = 80;
-    var isleHeight = 300;
+    var isleWidth = 100;
+    var isleHeight = 320;
     var checkoutWidth = 175;
-    var checkoutHeight = 55;
+    var checkoutHeight = 80;
 
     var AISLEENUM = {
         DAIRY: 0,
@@ -54,52 +54,64 @@
         color: normalColor,
         value: AISLEENUM.DAIRY,
         label: "Dairy",
-        ref: 'dragdrop.html'
+        ref: 'dragdrop.html',
+        width: isleWidth,
+        height: isleHeight
     };
     var beverages = {
         selected: false,
-        x: 250,
-        y: 300,
+        x: 270,
+        y: 340,
         color: normalColor,
         value: AISLEENUM.BEVERAGES,
         label: "Beverages",
-        ref: 'dragdrop.html'
+        ref: 'dragdrop.html',
+        width: isleWidth,
+        height: isleHeight
     };
     var meat = {
         selected: false,
-        x: 500,
+        x: 530,
         y: 0,
         color: normalColor,
         value: AISLEENUM.MEAT,
         label: "Meat",
-        ref: 'dragdrop.html'
+        ref: 'dragdrop.html',
+        width: isleWidth,
+        height: isleHeight
     };
     var bread = {
         selected: false,
-        x: 750,
-        y: 300,
+        x: 780,
+        y: 340,
         color: normalColor,
         value: AISLEENUM.BREAD,
         label: "Bread",
-        ref: 'dragdrop.html'
+        ref: 'dragdrop.html',
+        width: isleWidth,
+        height: isleHeight
     };
     var produce = {
         selected: false,
-        x: 1000,
+        x: 1030,
         y: 0,
         color: normalColor,
         value: AISLEENUM.PRODUCE,
         label: "Produce",
-        ref: 'dragdrop.html'
+        ref: 'dragdrop.html',
+        width: isleWidth,
+        height: isleHeight
     };
     var checkout = {
         selected: false,
         x: 0,
-        y: 545,
+        y: 570,
         color: normalColor,
         value: AISLEENUM.CHECKOUT,
         label: "Checkout",
-        ref: 'checkout.html'
+        ref: 'checkout.html',
+        width: checkoutWidth,
+        height: checkoutHeight
     };
 
     var aisles = [];
@@ -179,7 +191,7 @@
                     //dairy
                     dairy.selected = true;
                     dairy.color = selectedColor;
-                } else if (y - dy <= checkout.y + isleHeight && y - dy >= checkout.y && x + r > checkout.x && x < checkout.x + isleWidth) {
+                } else if (y - dy <= checkout.y + checkoutHeight && y - dy >= checkout.y && x + r > checkout.x && x < checkout.x + checkoutWidth) {
                     checkout.selected = true;
                     checkout.color = selectedColor;
                 } else {
@@ -217,7 +229,7 @@
                     //dairy
                     dairy.selected = true;
                     dairy.color = selectedColor;
-                } else if (y + r + dy >= checkout.y && y + r + dy <= checkout.y + isleHeight && x + r > checkout.x && x < checkout.x + isleWidth) {
+                } else if (y + r + dy >= checkout.y && y + r + dy <= checkout.y + checkoutHeight && x + r > checkout.x && x < checkout.x + checkoutWidth) {
                     checkout.selected = true;
                     checkout.color = selectedColor;
                 } else {
@@ -255,7 +267,7 @@
                     //dairy
                     dairy.selected = true;
                     dairy.color = selectedColor;
-                } else if (x-dx <= checkout.x + isleWidth && x-dx >= checkout.x && y + r > checkout.y && y < checkout.y + isleHeight) {
+                } else if (x-dx <= checkout.x + checkoutWidth && x-dx >= checkout.x && y + r > checkout.y && y < checkout.y + checkoutHeight) {
                     checkout.selected = true;
                     checkout.color = selectedColor;
                 } else {
@@ -293,7 +305,7 @@
                     //dairy
                     dairy.selected = true;
                     dairy.color = selectedColor;
-                } else if(x + r + dx >= checkout.x && x + r + dx <= checkout.x + isleWidth && y + r > checkout.y && y < checkout.y + isleHeight) {
+                } else if(x + r + dx >= checkout.x && x + r + dx <= checkout.x + checkoutWidth && y + r > checkout.y && y < checkout.y + checkoutHeight) {
                     //checkout
                     checkout.selected = true;
                     checkout.color = selectedColor;
@@ -321,9 +333,8 @@
         cart.circle(x, y, r, cartDirection);
         
         aisles.forEach(function(element){
-            isles.rect(element.x, element.y, isleWidth, isleHeight, element.color);
+            isles.rect(element.x, element.y, element.width, element.height, element.color);
         });
-        isles.rect(checkout.x, checkout.y, checkoutWidth, checkoutHeight, checkout.color);
     }
 
 
@@ -333,12 +344,11 @@
     canvas.addEventListener('click', function (event) {
         var x = event.pageX - elemX,
             y = event.pageY - elemY;
-        console.log(x, y);
         aisles.forEach(function(element){
-            if (element.selected && (y > element.y && y < element.y + isleHeight && x > element.x && x <  element.x + isleWidth)) {
-                localStorage.setItem("cartY",y);
-                localStorage.setItem("cartX",x);
-                localStorage.setItem("direction",cartDirection);
+            if (element.selected && (y > element.y && y < element.y + element.height && x > element.x && x <  element.x + element.width)) {
+                //localStorage.setItem("cartY",y);
+                //localStorage.setItem("cartX",x);
+                //localStorage.setItem("direction",cartDirection);
                 window.location.href = element.ref;
             }
         });

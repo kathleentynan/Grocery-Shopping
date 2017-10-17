@@ -53,7 +53,7 @@ var dairy = {
     color: normalColor,
     value: AISLEENUM.DAIRY,
     label: "Dairy",
-    ref: 'dragdrop.html',
+    ref: 'bakery.html',
     width: isleWidth,
     height: isleHeight
 };
@@ -64,7 +64,7 @@ var beverages = {
     color: normalColor,
     value: AISLEENUM.BEVERAGES,
     label: "Beverages",
-    ref: 'dragdrop.html',
+    ref: 'bakery.html',
     width: isleWidth,
     height: isleHeight
 };
@@ -75,7 +75,7 @@ var meat = {
     color: normalColor,
     value: AISLEENUM.MEAT,
     label: "Meat",
-    ref: 'dragdrop.html',
+    ref: 'bakery.html',
     width: isleWidth,
     height: isleHeight
 };
@@ -86,7 +86,7 @@ var bread = {
     color: normalColor,
     value: AISLEENUM.BREAD,
     label: "Bread",
-    ref: 'dragdrop.html',
+    ref: 'bakery.html',
     width: isleWidth,
     height: isleHeight
 };
@@ -97,7 +97,7 @@ var produce = {
     color: normalColor,
     value: AISLEENUM.PRODUCE,
     label: "Produce",
-    ref: 'dragdrop.html',
+    ref: 'bakery.html',
     width: isleWidth,
     height: isleHeight
 };

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="css/materialize.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Indie+Flower" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<script>
+    var x = 0;
+    var count = 0;
+    var z = -1;
+    var margin = 120;
+    var list = "";
+    var array = new Array();
+    var array2 = new Array();
+    var id;
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.currentTarget.id);
+        id = ev.currentTarget.id;
+    }
+    function remove(id){
+        delete array[id];
+        count --;
+        margin = margin -20;
+        document.getElementById("newId"+id).remove();
+        array.toString = function() {
+            return this.join('');
+        };
+        document.getElementById("text").innerHTML = array.toString();
+    }
+    function goBack(){
+        window.location.href = 'shopping.html';
+    }
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var nodeCopy = document.getElementById(data).cloneNode(true);
+        nodeCopy.id = "newId" + x;
+        if(id.localeCompare('bacon')==0)
+            array.push('<div class="item">-Bacon <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('burger')==0)
+            array.push('<div class="item">-Burger Patty <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('chicken')==0)
+            array.push('<div class="item">-Rotisserie Chicken <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('chicken_wings')==0)
+            array.push('<div class="item">-Chicken Wings <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('delipork')==0)
+            array.push('<div class="item">-Pork Salami <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('fish')==0)
+            array.push('<div class="item">-Fish <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('groudbeef')==0)
+            array.push('<div class="item">-Ground Beef <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('hotdog')==0)
+            array.push('<div class="item">-Hot Dog <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('lobster')==0)
+            array.push('<div class="item">-Lobster <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('oyster')==0)
+            array.push('<div class="item">-Oyster <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('pork')==0)
+            array.push('<div class="item">-Pork <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('salmon')==0)
+            array.push('<div class="item">-Salmon <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('sausage')==0)
+            array.push('<div class="item">-Sausage <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('shrimp')==0)
+            array.push('<div class="item">-Shrimp <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('steak')==0)
+            array.push('<div class="item">-Steak <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('tuna')==0)
+            array.push('<div class="item">-Tuna <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('turkey')==0)
+            array.push('<div class="item">-Turkey <a id="remove" onclick="remove('+x+')">x</a></div>');
+
+        for(y = array.length-1; y<array.length; y++){
+            if(array[y].localeCompare('undefined')!== 0)
+                list = list + array[y];
+        }
+        nodeCopy.style.marginLeft = margin + 'px';
+        x++;
+        count++;
+        margin = margin < 250 ? margin + 30 : 100;
+        nodeCopy.style.marginBottom = '-250px';
+        nodeCopy.style.zIndex = z;
+        nodeCopy.style.width = '150px';
+        nodeCopy.style.height = '150px';
+        ev.target.appendChild(nodeCopy);
+        var cart = document.getElementById("cart");
+        array.toString = function() {
+            return this.join('');
+        };
+        document.getElementById("text").innerHTML = array.toString();
+        if(count>=5) {
+            margin = 100;
+            cart.style.backgroundImage = "url(images/shopping_cart2.png)";
+            for(i = 0; i < array.length; i++){
+                document.getElementById("newId"+i).remove();
+            }
+        }
+    }
+</script>
+<body>
+<div class="row">
+    <div class= "col s1 back">
+        <i class="fa fa-arrow-left fa-4x" aria-hidden="true" onclick="goBack()"></i>
+    </div>
+    <div class="col s11">
+        <h1>Bakery</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col s1">
+        <div class="list">
+            <div class="listTitle">Shopping List</div>
+            <p id="text"></p>
+        </div>
+    </div>
+    <div class="col s2 offset-s1">
+        <div class="cart" id="cart" style="background-image: url('images/shopping_cart.png');" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+    <div class="col s5 offset-s7 shelves">
+        <div id="scroll-feature-1" class="horiz-scroll shelf">
+            <div class="scroller">
+                <div class="left-scroll invisible">
+                    <p class="fa fa-angle-left"></p>
+                </div>
+                <div class="right-scroll">
+                    <p class="fa fa-angle-right"></p>
+                </div>
+                <div class="scroll-images scrollable-x">
+                    <img id="bacon" src="images/meat/bacon.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="burger" src="images/meat/burger.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="chicken" src="images/meat/chicken.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="chicken_wings" src="images/meat/chicken_wings.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="delipork" src="images/meat/delipork.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="fish" src="images/meat/fish.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="groundbeef" src="images/meat/groundbeef.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="hotdog" src="images/meat/hotdog.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                </div>
+            </div>
+        </div>
+        <div id="scroll-feature-2" class="horiz-scroll shelf">
+            <div class="scroller">
+                <div class="left-scroll invisible">
+                    <p class="fa fa-angle-left"></p>
+                </div>
+                <div class="right-scroll">
+                    <p class="fa fa-angle-right"></p>
+                </div>
+                <div class="scroll-images scrollable-x">
+                    <img id="lobster" src="images/meat/lobster.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="oyster" src="images/meat/oyster.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="pork" src="images/meat/pork.png" alt="Image 3" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="salmon" src="images/meat/salmon.png" alt="Image 4" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="sausage" src="images/meat/sausage.png" alt="Image 5" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="shrimp" src="images/meat/shrimp.png" alt="Image 6" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="steak" src="images/meat/steak.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="tuna" src="images/meat/tuna.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="turkey" src="images/meat/turkey.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script type="text/javascript" src="js/verticalslider.js"></script>
+</html>

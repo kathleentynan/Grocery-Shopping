@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="css/materialize.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Indie+Flower" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<script>
+    var x = 0;
+    var count = 0;
+    var z = -1;
+    var margin = 120;
+    var list = "";
+    var array = new Array();
+    var array2 = new Array();
+    var id;
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.currentTarget.id);
+        id = ev.currentTarget.id;
+    }
+    function remove(id){
+        delete array[id];
+        count --;
+        margin = margin -20;
+        document.getElementById("newId"+id).remove();
+        array.toString = function() {
+            return this.join('');
+        };
+        document.getElementById("text").innerHTML = array.toString();
+    }
+    function goBack(){
+        window.location.href = 'shopping.html';
+    }
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var nodeCopy = document.getElementById(data).cloneNode(true);
+        nodeCopy.id = "newId" + x;
+        if(id.localeCompare('apple')==0)
+            array.push('<div class="item">-Apple <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('avocado')==0)
+            array.push('<div class="item">-Avocado <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('banana')==0)
+            array.push('<div class="item">-Banana <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('cabbage')==0)
+            array.push('<div class="item">-Cabbage <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('carrot')==0)
+            array.push('<div class="item">-Carrot <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('cauliflower')==0)
+            array.push('<div class="item">-Cauliflower <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('cucumber')==0)
+            array.push('<div class="item">-Cucumber <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('eggplant')==0)
+            array.push('<div class="item">-Eggplant <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('garlic')==0)
+            array.push('<div class="item">-Garlic <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('grapes')==0)
+            array.push('<div class="item">-Grapes<a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('mushrooms')==0)
+            array.push('<div class="item">-Mushrooms <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('onion')==0)
+            array.push('<div class="item">-Onion <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('orange')==0)
+            array.push('<div class="item">-Orange <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('pear')==0)
+            array.push('<div class="item">-Pear <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('pepper')==0)
+            array.push('<div class="item">-Pepper <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('pinapple')==0)
+            array.push('<div class="item">-Pineapple <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('potato')==0)
+            array.push('<div class="item">-Potato <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('spinach')==0)
+            array.push('<div class="item">-Spinach <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('tomato')==0)
+            array.push('<div class="item">-Tomato <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('turkeyleg')==0)
+            array.push('<div class="item">-Turkey Leg <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('zuchinni')==0)
+            array.push('<div class="item">-Zuchinni <a id="remove" onclick="remove('+x+')">x</a></div>');
+        for(y = array.length-1; y<array.length; y++){
+            if(array[y].localeCompare('undefined')!== 0)
+                list = list + array[y];
+        }
+        nodeCopy.style.marginLeft = margin + 'px';
+        x++;
+        count++;
+        margin = margin < 250 ? margin + 30 : 100;
+        nodeCopy.style.marginBottom = '-250px';
+        nodeCopy.style.zIndex = z;
+        nodeCopy.style.width = '150px';
+        nodeCopy.style.height = '150px';
+        ev.target.appendChild(nodeCopy);
+        var cart = document.getElementById("cart");
+        array.toString = function() {
+            return this.join('');
+        };
+        document.getElementById("text").innerHTML = array.toString();
+        if(count>=5) {
+            margin = 100;
+            cart.style.backgroundImage = "url(images/shopping_cart2.png)";
+            for(i = 0; i < array.length; i++){
+                document.getElementById("newId"+i).remove();
+            }
+        }
+    }
+</script>
+<body>
+<div class="row">
+    <div class= "col s1 back">
+        <i class="fa fa-arrow-left fa-4x" aria-hidden="true" onclick="goBack()"></i>
+    </div>
+    <div class="col s11">
+        <h1>Produce</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col s1">
+        <div class="list">
+            <div class="listTitle">Shopping List</div>
+            <p id="text"></p>
+        </div>
+    </div>
+    <div class="col s2 offset-s1">
+        <div class="cart" id="cart" style="background-image: url('images/shopping_cart.png');" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+    <div class="col s5 offset-s7 shelves">
+        <div id="scroll-feature-1" class="horiz-scroll shelf">
+            <div class="scroller">
+                <div class="left-scroll invisible">
+                    <p class="fa fa-angle-left"></p>
+                </div>
+                <div class="right-scroll">
+                    <p class="fa fa-angle-right"></p>
+                </div>
+                <div class="scroll-images scrollable-x">
+                    <img id="apple" src="images/produce/apple.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="avocado" src="images/produce/avocado.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="banana" src="images/produce/banana.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="broccoli" src="images/produce/broccoli.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="cabbage" src="images/produce/cabbage.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="carrot" src="images/produce/carrot.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="cauliflower" src="images/produce/cauliflower.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="cucumber" src="images/produce/cucumber.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="eggplant" src="images/produce/eggplant.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="garlic" src="images/produce/garlic.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="grapes" src="images/produce/grapes.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                </div>
+            </div>
+        </div>
+        <div id="scroll-feature-2" class="horiz-scroll shelf">
+            <div class="scroller">
+                <div class="left-scroll invisible">
+                    <p class="fa fa-angle-left"></p>
+                </div>
+                <div class="right-scroll">
+                    <p class="fa fa-angle-right"></p>
+                </div>
+                <div class="scroll-images scrollable-x">
+                    <img id="mushrooms" src="images/produce/mushrooms.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="onion" src="images/produce/onion.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="orange" src="images/produce/orange.png" alt="Image 3" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="pear" src="images/produce/pear.png" alt="Image 4" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="pepper" src="images/produce/pepper.png" alt="Image 5" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="pinapple" src="images/produce/pinapple.png" alt="Image 6" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="potato" src="images/produce/potato.png" alt="Image 7" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="spinach" src="images/produce/spinach.png" alt="Image 8" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="tomato" src="images/produce/tomato.png" alt="Image 9" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="turkeyleg" src="images/produce/turkeyleg.png" alt="Image 10" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                    <img id="zuchinni" src="images/produce/zuchinni.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script type="text/javascript" src="js/verticalslider.js"></script>
+</html>

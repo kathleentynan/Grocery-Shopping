@@ -2,6 +2,7 @@
 
 body {
     background-color: cornflowerblue;
+    font-family: 'Francois One', sans-serif;
 }
 
 .horiz-scroll {
@@ -154,9 +155,9 @@ body {
 }
 
 h1{
-    font-family: 'Comfortaa', cursive;
     text-align: center;
     line-height: 90px;
+    font-size: 80px;
 }
 
 .listTitle {

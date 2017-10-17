@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/materialize.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Francois+One|Indie+Flower" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <script>
@@ -82,8 +82,8 @@
             array.push('<div class="item">-Spinach <a id="remove" onclick="remove('+x+')">x</a></div>');
         else if(id.localeCompare('tomato')==0)
             array.push('<div class="item">-Tomato <a id="remove" onclick="remove('+x+')">x</a></div>');
-        else if(id.localeCompare('turkeyleg')==0)
-            array.push('<div class="item">-Turkey Leg <a id="remove" onclick="remove('+x+')">x</a></div>');
+        else if(id.localeCompare('broccoli')==0)
+            array.push('<div class="item">-Broccoli <a id="remove" onclick="remove('+x+')">x</a></div>');
         else if(id.localeCompare('zuchinni')==0)
             array.push('<div class="item">-Zuchinni <a id="remove" onclick="remove('+x+')">x</a></div>');
         for(y = array.length-1; y<array.length; y++){
@@ -104,13 +104,6 @@
             return this.join('');
         };
         document.getElementById("text").innerHTML = array.toString();
-        if(count>=5) {
-            margin = 100;
-            cart.style.backgroundImage = "url(images/shopping_cart2.png)";
-            for(i = 0; i < array.length; i++){
-                document.getElementById("newId"+i).remove();
-            }
-        }
     }
 </script>
 <body>
@@ -174,7 +167,6 @@
                     <img id="potato" src="images/produce/potato.png" alt="Image 7" draggable="true" ondragstart="drag(event)" style="position: relative;">
                     <img id="spinach" src="images/produce/spinach.png" alt="Image 8" draggable="true" ondragstart="drag(event)" style="position: relative;">
                     <img id="tomato" src="images/produce/tomato.png" alt="Image 9" draggable="true" ondragstart="drag(event)" style="position: relative;">
-                    <img id="turkeyleg" src="images/produce/turkeyleg.png" alt="Image 10" draggable="true" ondragstart="drag(event)" style="position: relative;">
                     <img id="zuchinni" src="images/produce/zuchinni.png" draggable="true" ondragstart="drag(event)" style="position: relative;">
                 </div>
             </div>

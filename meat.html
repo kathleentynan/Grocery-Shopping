@@ -97,13 +97,6 @@
             return this.join('');
         };
         document.getElementById("text").innerHTML = array.toString();
-        if(count>=5) {
-            margin = 100;
-            cart.style.backgroundImage = "url(images/shopping_cart2.png)";
-            for(i = 0; i < array.length; i++){
-                document.getElementById("newId"+i).remove();
-            }
-        }
     }
 </script>
 <body>
@@ -112,7 +105,7 @@
         <i class="fa fa-arrow-left fa-4x" aria-hidden="true" onclick="goBack()"></i>
     </div>
     <div class="col s11">
-        <h1>Bakery</h1>
+        <h1>Meat</h1>
     </div>
 </div>
 <div class="row">

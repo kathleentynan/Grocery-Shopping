@@ -5,19 +5,16 @@ body {
 	background-color: cornflowerblue;
 	background-size: cover;
 	background-repeat: no-repeat;
-    font-family: Arial, sans-serif;
+    font-family: 'Francois One', sans-serif;
 	font-weight: bold;
 	font-size: 14px;
 }
 
 
 .wrap {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-top: -86px;
-	margin-left: -89px;
+	position: relative;
 	text-align: center;
+    padding: 10px;
 }
 
 a {
@@ -35,12 +32,46 @@ a {
 }
 
 a.button {
-	color: rgba(30, 22, 54, 0.6);
-	box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+	color: whitesmoke;
+    background: green;
+	box-shadow: green 0 0px 0px 2px inset;
+    font-size: 20px
 }
 
 a.button:hover {
 	color: rgba(255, 255, 255, 0.85);
-	box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+	box-shadow: #73db3b 0 0px 0px 40px inset;
+}
+
+h1 {
+    font-size: 300%;
+    text-align: center;
+    padding: 10px;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img.logo {
+    max-width: 70px; 
+}
+
+img.cashier {
+    height: 400px;
+}
+
+h2 {
+    font-size: 25px;
+    text-align: center;
+}
+
+.shopping {
+    background: beige;
+    border-radius: 20px;
+    width: 1000px;
+    margin: auto
 }
 

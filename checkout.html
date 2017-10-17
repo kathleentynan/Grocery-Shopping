@@ -34,8 +34,13 @@ and open the template in the editor.
                                         <th>Total Price</th>
                                     </tr>
                                 </thead>
-
-                                <tbody>
+<script>
+    var array = JSON.parse(sessionStorage.getItem("ShoppingList"));
+    array.toString = function() {
+    return this.join('');
+};
+document.getElementById("table").innerHTML = array;</script>
+                                <tbody id="table">
                                     <tr>
                                         <td>Bread</td>
                                         <td>5</td>

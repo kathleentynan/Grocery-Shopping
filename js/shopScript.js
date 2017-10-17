@@ -13,25 +13,25 @@
     var normalColor = "#daa671";
     var cartDirection = "left";
 
-    if(localStorage.getItem("direction")!=null)
-        cartDirection = localStorage.getItem("direction")
+    if(sessionStorage.getItem("direction")!=null)
+        cartDirection = sessionStorage.getItem("direction")
 
-    if(localStorage.getItem("cartX") && cartDirection.localeCompare("right")==0)
-        x = parseInt(localStorage.getItem("cartX"))-130;
-    if(localStorage.getItem("cartY") && cartDirection.localeCompare("right")==0)
-        y = parseInt(localStorage.getItem("cartY"))-5;
-    if(localStorage.getItem("cartX") && cartDirection.localeCompare("up")==0)
-        x = parseInt(localStorage.getItem("cartX"))-80;
-    if(localStorage.getItem("cartY") && cartDirection.localeCompare("up")==0)
-        y = parseInt(localStorage.getItem("cartY"))+85;
-    if(localStorage.getItem("cartX") && cartDirection.localeCompare("left")==0)
-        x = parseInt(localStorage.getItem("cartX"))+60;
-    if(localStorage.getItem("cartY") && cartDirection.localeCompare("left")==0)
-        y = parseInt(localStorage.getItem("cartY"))-60;
-    if(localStorage.getItem("cartX") && cartDirection.localeCompare("down")==0)
-        x = parseInt(localStorage.getItem("cartX"))-70;
-    if(localStorage.getItem("cartY") && cartDirection.localeCompare("down")==0)
-        y = parseInt(localStorage.getItem("cartY"))-210;
+    if(sessionStorage.getItem("cartX") && cartDirection.localeCompare("right")==0)
+        x = parseInt(sessionStorage.getItem("cartX"))-130;
+    if(sessionStorage.getItem("cartY") && cartDirection.localeCompare("right")==0)
+        y = parseInt(sessionStorage.getItem("cartY"))-5;
+    if(sessionStorage.getItem("cartX") && cartDirection.localeCompare("up")==0)
+        x = parseInt(sessionStorage.getItem("cartX"))-80;
+    if(sessionStorage.getItem("cartY") && cartDirection.localeCompare("up")==0)
+        y = parseInt(sessionStorage.getItem("cartY"))+85;
+    if(sessionStorage.getItem("cartX") && cartDirection.localeCompare("left")==0)
+        x = parseInt(sessionStorage.getItem("cartX"))+60;
+    if(sessionStorage.getItem("cartY") && cartDirection.localeCompare("left")==0)
+        y = parseInt(sessionStorage.getItem("cartY"))-60;
+    if(sessionStorage.getItem("cartX") && cartDirection.localeCompare("down")==0)
+        x = parseInt(sessionStorage.getItem("cartX"))-70;
+    if(sessionStorage.getItem("cartY") && cartDirection.localeCompare("down")==0)
+        y = parseInt(sessionStorage.getItem("cartY"))-210;
     
     var isleWidth = 80;
     var isleHeight = 300;
@@ -54,7 +54,7 @@
         color: normalColor,
         value: AISLEENUM.DAIRY,
         label: "Dairy",
-        ref: 'dragdrop.html'
+        href: 'bakery.html'
     };
     var beverages = {
         selected: false,
@@ -63,7 +63,7 @@
         color: normalColor,
         value: AISLEENUM.BEVERAGES,
         label: "Beverages",
-        ref: 'dragdrop.html'
+        href: 'bakery.html'
     };
     var meat = {
         selected: false,
@@ -72,7 +72,7 @@
         color: normalColor,
         value: AISLEENUM.MEAT,
         label: "Meat",
-        ref: 'dragdrop.html'
+        href: 'bakery.html'
     };
     var bread = {
         selected: false,
@@ -81,7 +81,7 @@
         color: normalColor,
         value: AISLEENUM.BREAD,
         label: "Bread",
-        ref: 'dragdrop.html'
+        href: 'bakery.html'
     };
     var produce = {
         selected: false,
@@ -90,7 +90,7 @@
         color: normalColor,
         value: AISLEENUM.PRODUCE,
         label: "Produce",
-        ref: 'dragdrop.html'
+        href: 'bakery.html'
     };
     var checkout = {
         selected: false,
@@ -336,10 +336,10 @@
         console.log(x, y);
         aisles.forEach(function(element){
             if (element.selected && (y > element.y && y < element.y + isleHeight && x > element.x && x <  element.x + isleWidth)) {
-                localStorage.setItem("cartY",y);
-                localStorage.setItem("cartX",x);
-                localStorage.setItem("direction",cartDirection);
-                window.location.href = element.ref;
+                sessionStorage.setItem("cartY",y);
+                sessionStorage.setItem("cartX",x);
+                sessionStorage.setItem("direction",cartDirection);
+                window.location.href = element.href;
             }
         });
     });

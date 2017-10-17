@@ -1,163 +1,174 @@
-    var canvas;
-    var ctx;
-    var elemX, elemY;
-    var dx = 15;
-    var dy = 15;
-    var x = 930;
-    var y = 500;
+var canvas;
+var ctx;
+var elemX, elemY;
+var dx = 15;
+var dy = 15;
+var x = 930;
+var y = 500;
 
-    var r = 85;
-    var WIDTH = 1100;
-    var HEIGHT = 600;
-    var selectedColor = "red";
-    var normalColor = "#daa671";
-    var cartDirection = "left";
+var r = 85;
+var WIDTH = 1200;
+var HEIGHT = 650;
+var selectedColor = "red";
+var normalColor = "#daa671";
+var cartDirection = "left";
 
-    if(sessionStorage.getItem("direction")!=null)
-        cartDirection = sessionStorage.getItem("direction")
+/*if(localStorage.getItem("direction")!=null)
+    cartDirection = localStorage.getItem("direction")
+if(localStorage.getItem("cartX") && cartDirection.localeCompare("right")==0)
+    x = parseInt(localStorage.getItem("cartX"))-130;
+if(localStorage.getItem("cartY") && cartDirection.localeCompare("right")==0)
+    y = parseInt(localStorage.getItem("cartY"))-5;
+if(localStorage.getItem("cartX") && cartDirection.localeCompare("up")==0)
+    x = parseInt(localStorage.getItem("cartX"))-80;
+if(localStorage.getItem("cartY") && cartDirection.localeCompare("up")==0)
+    y = parseInt(localStorage.getItem("cartY"))+85;
+if(localStorage.getItem("cartX") && cartDirection.localeCompare("left")==0)
+    x = parseInt(localStorage.getItem("cartX"))+60;
+if(localStorage.getItem("cartY") && cartDirection.localeCompare("left")==0)
+    y = parseInt(localStorage.getItem("cartY"))-60;
+if(localStorage.getItem("cartX") && cartDirection.localeCompare("down")==0)
+    x = parseInt(localStorage.getItem("cartX"))-70;
+if(localStorage.getItem("cartY") && cartDirection.localeCompare("down")==0)
+    y = parseInt(localStorage.getItem("cartY"))-210;*/
 
-    if(sessionStorage.getItem("cartX") && cartDirection.localeCompare("right")==0)
-        x = parseInt(sessionStorage.getItem("cartX"))-130;
-    if(sessionStorage.getItem("cartY") && cartDirection.localeCompare("right")==0)
-        y = parseInt(sessionStorage.getItem("cartY"))-5;
-    if(sessionStorage.getItem("cartX") && cartDirection.localeCompare("up")==0)
-        x = parseInt(sessionStorage.getItem("cartX"))-80;
-    if(sessionStorage.getItem("cartY") && cartDirection.localeCompare("up")==0)
-        y = parseInt(sessionStorage.getItem("cartY"))+85;
-    if(sessionStorage.getItem("cartX") && cartDirection.localeCompare("left")==0)
-        x = parseInt(sessionStorage.getItem("cartX"))+60;
-    if(sessionStorage.getItem("cartY") && cartDirection.localeCompare("left")==0)
-        y = parseInt(sessionStorage.getItem("cartY"))-60;
-    if(sessionStorage.getItem("cartX") && cartDirection.localeCompare("down")==0)
-        x = parseInt(sessionStorage.getItem("cartX"))-70;
-    if(sessionStorage.getItem("cartY") && cartDirection.localeCompare("down")==0)
-        y = parseInt(sessionStorage.getItem("cartY"))-210;
-    
-    var isleWidth = 80;
-    var isleHeight = 300;
-    var checkoutWidth = 175;
-    var checkoutHeight = 55;
+var isleWidth = 100;
+var isleHeight = 320;
+var checkoutWidth = 175;
+var checkoutHeight = 80;
 
-    var AISLEENUM = {
-        DAIRY: 0,
-        BEVERAGES: 1,
-        MEAT: 2,
-        BREAD: 3,
-        PRODUCE: 4,
-        CHECKOUT: 5
-    };
-  
-    var dairy = {
-        selected: false,
-        x: 0,
-        y: 0,
-        color: normalColor,
-        value: AISLEENUM.DAIRY,
-        label: "Dairy",
-        href: 'bakery.html'
-    };
-    var beverages = {
-        selected: false,
-        x: 250,
-        y: 300,
-        color: normalColor,
-        value: AISLEENUM.BEVERAGES,
-        label: "Beverages",
-        href: 'bakery.html'
-    };
-    var meat = {
-        selected: false,
-        x: 500,
-        y: 0,
-        color: normalColor,
-        value: AISLEENUM.MEAT,
-        label: "Meat",
-        href: 'bakery.html'
-    };
-    var bread = {
-        selected: false,
-        x: 750,
-        y: 300,
-        color: normalColor,
-        value: AISLEENUM.BREAD,
-        label: "Bread",
-        href: 'bakery.html'
-    };
-    var produce = {
-        selected: false,
-        x: 1000,
-        y: 0,
-        color: normalColor,
-        value: AISLEENUM.PRODUCE,
-        label: "Produce",
-        href: 'bakery.html'
-    };
-    var checkout = {
-        selected: false,
-        x: 0,
-        y: 545,
-        color: normalColor,
-        value: AISLEENUM.CHECKOUT,
-        label: "Checkout",
-        ref: 'checkout.html'
-    };
+var AISLEENUM = {
+    DAIRY: 0,
+    BEVERAGES: 1,
+    MEAT: 2,
+    BREAD: 3,
+    PRODUCE: 4,
+    CHECKOUT: 5
+};
 
-    var aisles = [];
-    aisles.push(dairy, beverages, meat, bread, produce, checkout);
+var dairy = {
+    selected: false,
+    x: 0,
+    y: 0,
+    color: normalColor,
+    value: AISLEENUM.DAIRY,
+    label: "Dairy",
+    ref: 'dragdrop.html',
+    width: isleWidth,
+    height: isleHeight
+};
+var beverages = {
+    selected: false,
+    x: 270,
+    y: 340,
+    color: normalColor,
+    value: AISLEENUM.BEVERAGES,
+    label: "Beverages",
+    ref: 'dragdrop.html',
+    width: isleWidth,
+    height: isleHeight
+};
+var meat = {
+    selected: false,
+    x: 530,
+    y: 0,
+    color: normalColor,
+    value: AISLEENUM.MEAT,
+    label: "Meat",
+    ref: 'dragdrop.html',
+    width: isleWidth,
+    height: isleHeight
+};
+var bread = {
+    selected: false,
+    x: 780,
+    y: 340,
+    color: normalColor,
+    value: AISLEENUM.BREAD,
+    label: "Bread",
+    ref: 'dragdrop.html',
+    width: isleWidth,
+    height: isleHeight
+};
+var produce = {
+    selected: false,
+    x: 1030,
+    y: 0,
+    color: normalColor,
+    value: AISLEENUM.PRODUCE,
+    label: "Produce",
+    ref: 'dragdrop.html',
+    width: isleWidth,
+    height: isleHeight
+};
+var checkout = {
+    selected: false,
+    x: 0,
+    y: 570,
+    color: normalColor,
+    value: AISLEENUM.CHECKOUT,
+    label: "Checkout",
+    ref: 'checkout.html',
+    width: checkoutWidth,
+    height: checkoutHeight
+};
 
-    var img = new Image();
-    img.src = "images/cart/cartLeft.png";
+var aisles = [];
+aisles.push(dairy, beverages, meat, bread, produce, checkout);
 
-    //create cart
-    var cart = (function(){
-      return {
-         circle : function(x,y,r, direction) {
-             if (direction == "left"){
-                 img.src = "images/cart/cartLeft.png";
-             } else if (direction == "right") {
+var img = new Image();
+img.src = "images/cart/cartLeft.png";
+
+//create cart
+var cart = (function(){
+    return {
+        circle : function(x,y,r, direction) {
+            if (direction == "left"){
+                img.src = "images/cart/cartLeft.png";
+            } else if (direction == "right") {
                 img.src = "images/cart/cartRight.png";
-             } else if (direction == "up") {
-                 img.src = "images/cart/cartUp.png";
-             } else if (direction == "down"){
-                 img.src = "images/cart/cartDown.png";
-             }
-             ctx.drawImage(img, x, y, r, r);
+            } else if (direction == "up") {
+                img.src = "images/cart/cartUp.png";
+            } else if (direction == "down"){
+                img.src = "images/cart/cartDown.png";
+            }
+            ctx.drawImage(img, x, y, r, r);
         }
     }
 
-    }());
+}());
 
-    //isle rectangle
-    var isles = (function(){
-      return {
-          rect : function(x,y,w,h,color) {
-              ctx.fillStyle = color;
-              ctx.beginPath();
-              ctx.rect(x,y,w,h);
-              ctx.closePath();
-              ctx.fill();
-            }     
+//isle rectangle
+var isles = (function(){
+    return {
+        rect : function(x,y,w,h,color) {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.rect(x,y,w,h);
+            ctx.closePath();
+            ctx.fill();
+        }
     }
 
-    }());
+}());
 
-    function clear() {
-        ctx.clearRect(0, 0, WIDTH, HEIGHT);
-    }
+function clear() {
+    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+}
 
-    function main() {
-        canvas = document.getElementById("canvas");
-        elemX = canvas.offsetLeft,
+function main() {
+    canvas = document.getElementById("canvas");
+    elemX = canvas.offsetLeft,
         elemY = canvas.offsetTop,
         ctx = canvas.getContext("2d");
-        return setInterval(draw, 10);
-    }
+    return setInterval(draw, 10);
+}
 
-    
 
-    function doKeyDown(evt){
-        switch (evt.keyCode) {
-            case 38:  /* Up arrow was pressed */
+
+function doKeyDown(evt){
+    switch (evt.keyCode) {
+        case 38:  /* Up arrow was pressed */
             if (y - dy > 0){
                 if (y - dy <= produce.y + isleHeight && y - dy >= produce.y && x + r > produce.x && x < produce.x + isleWidth) {
                     //produce
@@ -179,23 +190,23 @@
                     //dairy
                     dairy.selected = true;
                     dairy.color = selectedColor;
-                } else if (y - dy <= checkout.y + isleHeight && y - dy >= checkout.y && x + r > checkout.x && x < checkout.x + isleWidth) {
+                } else if (y - dy <= checkout.y + checkoutHeight && y - dy >= checkout.y && x + r > checkout.x && x < checkout.x + checkoutWidth) {
                     checkout.selected = true;
                     checkout.color = selectedColor;
                 } else {
                     y -= dy;
-                    
+
                     aisles.forEach(function(element){
                         element.selected = false;
                         element.color = normalColor;
                     });
-                    
+
                     cartDirection = "up";
                 }
             }
             break;
 
-            case 40:  /* Down arrow was pressed */
+        case 40:  /* Down arrow was pressed */
             if (y + dy < HEIGHT){
                 if (y + r + dy >= produce.y && y + r + dy <= produce.y + isleHeight && x + r > produce.x && x < produce.x + isleWidth) {
                     //produce
@@ -213,27 +224,27 @@
                     //beverages
                     beverages.selected = true;
                     beverages.color = selectedColor;
-                } else if (y + r + dy >= dairy.y && y + r + dy <= dairy.y + isleHeight && x + r > dairy.x && x < dairy.x + isleWidth) { 
+                } else if (y + r + dy >= dairy.y && y + r + dy <= dairy.y + isleHeight && x + r > dairy.x && x < dairy.x + isleWidth) {
                     //dairy
                     dairy.selected = true;
                     dairy.color = selectedColor;
-                } else if (y + r + dy >= checkout.y && y + r + dy <= checkout.y + isleHeight && x + r > checkout.x && x < checkout.x + isleWidth) {
+                } else if (y + r + dy >= checkout.y && y + r + dy <= checkout.y + checkoutHeight && x + r > checkout.x && x < checkout.x + checkoutWidth) {
                     checkout.selected = true;
                     checkout.color = selectedColor;
                 } else {
                     y += dy;
-                    
+
                     aisles.forEach(function(element){
                         element.selected = false;
                         element.color = normalColor;
                     });
-                    
+
                     cartDirection = "down";
                 }
             }
             break;
 
-            case 37:  /* Left arrow was pressed */
+        case 37:  /* Left arrow was pressed */
             if (x - dx > 0){
                 if (x <= produce.x + isleWidth && x >= produce.x && y + r > produce.y && y < produce.y + isleHeight){
                     //produce
@@ -255,23 +266,23 @@
                     //dairy
                     dairy.selected = true;
                     dairy.color = selectedColor;
-                } else if (x-dx <= checkout.x + isleWidth && x-dx >= checkout.x && y + r > checkout.y && y < checkout.y + isleHeight) {
+                } else if (x-dx <= checkout.x + checkoutWidth && x-dx >= checkout.x && y + r > checkout.y && y < checkout.y + checkoutHeight) {
                     checkout.selected = true;
                     checkout.color = selectedColor;
                 } else {
                     x -= dx;
-                    
+
                     aisles.forEach(function(element){
                         element.selected = false;
                         element.color = normalColor;
                     });
-                    
+
                     cartDirection = "left";
                 }
-            }         
+            }
             break;
 
-            case 39:  /* Right arrow was pressed */
+        case 39:  /* Right arrow was pressed */
             if (x + r + dx < WIDTH){
                 if (x + r + dx >= produce.x && x + r + dx <= produce.x + isleWidth && y + r > produce.y && y < produce.y + isleHeight) {
                     //produce
@@ -293,54 +304,52 @@
                     //dairy
                     dairy.selected = true;
                     dairy.color = selectedColor;
-                } else if(x + r + dx >= checkout.x && x + r + dx <= checkout.x + isleWidth && y + r > checkout.y && y < checkout.y + isleHeight) {
+                } else if(x + r + dx >= checkout.x && x + r + dx <= checkout.x + checkoutWidth && y + r > checkout.y && y < checkout.y + checkoutHeight) {
                     //checkout
                     checkout.selected = true;
                     checkout.color = selectedColor;
                 }else {
                     x+=dx;
-                    
-                    
+
+
                     aisles.forEach(function(element){
                         element.selected = false;
                         element.color = normalColor;
                     });
-                    
+
                     cartDirection = "right";
                 }
             }
             break;
-        }     
     }
+}
 
-    function draw () {
-        clear();
-        ctx.fillStyle = "white";
-        ctx.strokeStyle = "black";
+function draw () {
+    clear();
+    ctx.fillStyle = "white";
+    ctx.strokeStyle = "black";
 
-        cart.circle(x, y, r, cartDirection);
-        
-        aisles.forEach(function(element){
-            isles.rect(element.x, element.y, isleWidth, isleHeight, element.color);
-        });
-        isles.rect(checkout.x, checkout.y, checkoutWidth, checkoutHeight, checkout.color);
-    }
+    cart.circle(x, y, r, cartDirection);
 
-
-    
-
-    main();
-    canvas.addEventListener('click', function (event) {
-        var x = event.pageX - elemX,
-            y = event.pageY - elemY;
-        console.log(x, y);
-        aisles.forEach(function(element){
-            if (element.selected && (y > element.y && y < element.y + isleHeight && x > element.x && x <  element.x + isleWidth)) {
-                sessionStorage.setItem("cartY",y);
-                sessionStorage.setItem("cartX",x);
-                sessionStorage.setItem("direction",cartDirection);
-                window.location.href = element.href;
-            }
-        });
+    aisles.forEach(function(element){
+        isles.rect(element.x, element.y, element.width, element.height, element.color);
     });
-    window.addEventListener('keydown',doKeyDown,true);
+}
+
+
+
+
+main();
+canvas.addEventListener('click', function (event) {
+    var x = event.pageX - elemX,
+        y = event.pageY - elemY;
+    aisles.forEach(function(element){
+        if (element.selected && (y > element.y && y < element.y + element.height && x > element.x && x <  element.x + element.width)) {
+            //localStorage.setItem("cartY",y);
+            //localStorage.setItem("cartX",x);
+            //localStorage.setItem("direction",cartDirection);
+            window.location.href = element.ref;
+        }
+    });
+});
+window.addEventListener('keydown',doKeyDown,true);

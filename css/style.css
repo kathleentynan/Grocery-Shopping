@@ -26,10 +26,12 @@ body {
 
 .horiz-scroll .scroller .left-scroll {
     left: 0;
+    cursor: pointer;
 }
 
 .horiz-scroll .scroller .right-scroll {
     right: 0;
+    cursor: pointer;
 }
 
 .horiz-scroll .scroller .left-scroll,
@@ -201,4 +203,8 @@ h1{
     margin: 20px;
     cursor: pointer;
     position: absolute;
+}
+
+.scrollImg {
+    cursor: pointer;
 }

@@ -191,11 +191,9 @@
                 ctx.drawImage(iconImage, x + 15, y + 17, 70, 70);
               }
               if (selectedElement) {
-                  if (selectedElement.text){
-                      ctx.font="30px Verdana";
-                      ctx.fillStyle = "black";
-                      ctx.fillText(selectedElement.label, selectedElement.x + 15, selectedElement.y + 150, 70);
-                  }
+                  ctx.font="30px Verdana";
+                  ctx.fillStyle = "black";
+                  ctx.fillText(selectedElement.label, selectedElement.x + 15, selectedElement.y + 150, 70);             
               }
             }     
     }
@@ -319,6 +317,14 @@ function doKeyDown(evt){
                 } 
             }
             break;
+            
+        case 32:
+            aisles.forEach(function(element){
+            if (element.selected) {
+                window.location.href = element.ref;
+                
+            }
+        });
     }
 }
 
@@ -339,29 +345,4 @@ function draw () {
 
     main();
 
-    canvas.addEventListener("mousemove", function(e) {
-        mousePos.x = e.pageX - this.offsetLeft;
-        mousePos.y = e.pageY - this.offsetTop;
-        if (selectedElement) {
-            if (mousePos.y > selectedElement.y && mousePos.y < selectedElement.y + selectedElement.height && mousePos.x > selectedElement.x && mousePos.x <  selectedElement.x + selectedElement.width) {
-                document.body.style.cursor = 'pointer';
-                selectedElement.text = true;
-            } else {
-                selectedElement.text = false;
-                document.body.style.cursor = 'default';
-            }
-        }
-    });
-
-    canvas.addEventListener('click', function (e) {
-        aisles.forEach(function(element){
-            if (element.selected && (mousePos.y > element.y && mousePos.y < element.y + element.height && mousePos.x > element.x && mousePos.x <  element.x + element.width)) {
-                //localStorage.setItem("cartY",y);
-                //localStorage.setItem("cartX",x);
-                //localStorage.setItem("direction",cartDirection);
-                window.location.href = element.ref;
-                
-            }
-        });
-    });
 window.addEventListener('keydown',doKeyDown,true);

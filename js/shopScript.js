@@ -19,26 +19,8 @@
         x: 0,
         y: 0
     }
-
-    /*if(localStorage.getItem("direction")!=null)
-        cartDirection = localStorage.getItem("direction")
-
-    if(localStorage.getItem("cartX") && cartDirection.localeCompare("right")==0)
-        x = parseInt(localStorage.getItem("cartX"))-130;
-    if(localStorage.getItem("cartY") && cartDirection.localeCompare("right")==0)
-        y = parseInt(localStorage.getItem("cartY"))-5;
-    if(localStorage.getItem("cartX") && cartDirection.localeCompare("up")==0)
-        x = parseInt(localStorage.getItem("cartX"))-80;
-    if(localStorage.getItem("cartY") && cartDirection.localeCompare("up")==0)
-        y = parseInt(localStorage.getItem("cartY"))+85;
-    if(localStorage.getItem("cartX") && cartDirection.localeCompare("left")==0)
-        x = parseInt(localStorage.getItem("cartX"))+60;
-    if(localStorage.getItem("cartY") && cartDirection.localeCompare("left")==0)
-        y = parseInt(localStorage.getItem("cartY"))-60;
-    if(localStorage.getItem("cartX") && cartDirection.localeCompare("down")==0)
-        x = parseInt(localStorage.getItem("cartX"))-70;
-    if(localStorage.getItem("cartY") && cartDirection.localeCompare("down")==0)
-        y = parseInt(localStorage.getItem("cartY"))-210;*/
+    
+    var cartsound = document.getElementById("cart");
     
     var isleWidth = 100;
     var isleHeight = 300;
@@ -281,15 +263,17 @@ function doKeyDown(evt){
         case 38:  /* Up arrow was pressed */
             if (y - dy > 0){
                 selectedElement = collides(aisles, x, y, r, 'up');
+                cartsound.play();
                 if (!selectedElement) {
                     y -= dx;
                     cartDirection = "up";
                 } 
-            }
+            } 
             break;
 
         case 40:  /* Down arrow was pressed */
             if (y + dy < HEIGHT){
+                cartsound.play();
                     selectedElement = collides(aisles, x, y, r, 'down');
                 if (!selectedElement) {
                     y += dx;
@@ -300,6 +284,7 @@ function doKeyDown(evt){
 
         case 37:  /* Left arrow was pressed */
             if (x - dx > 0){
+                cartsound.play();
                 selectedElement = collides(aisles, x, y, r, 'left');
                 if (!selectedElement) {
                     x -= dx;
@@ -310,6 +295,7 @@ function doKeyDown(evt){
 
         case 39:  /* Right arrow was pressed */
             if (x + r + dx < WIDTH){
+                cartsound.play();
                 selectedElement = collides(aisles, x, y, r, 'right');
                 if (!selectedElement) {
                     x += dx;
@@ -320,11 +306,11 @@ function doKeyDown(evt){
             
         case 32:
             aisles.forEach(function(element){
-            if (element.selected) {
-                window.location.href = element.ref;
-                
-            }
-        });
+                if (element.selected) {
+                    window.location.href = element.ref;
+                }
+            });
+            break;
     }
 }
 

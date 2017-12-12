@@ -38,12 +38,12 @@ and open the template in the editor.
                                         <th>Total Price</th>
                                     </tr>
                                 </thead>
-<script>
-    var array = JSON.parse(sessionStorage.getItem("ShoppingList"));
-    array.toString = function() {
-    return this.join('');
-};
-document.getElementById("table").innerHTML = array;</script>
+                                <script>
+                                    var array = JSON.parse(sessionStorage.getItem("ShoppingList"));
+                                    array.toString = function () {
+                                        return this.join('');
+                                    };
+                                    document.getElementById("table").innerHTML = array;</script>
                                 <tbody id="table">
                                     <tr>
                                         <td>Bread</td>
@@ -69,7 +69,7 @@ document.getElementById("table").innerHTML = array;</script>
                             </table>
                         </td>
                         <td>
-                            <div class="center" id="cashier1" style="width: 250px;"><img src="images/Waving_Speaking_Cashier.gif" style="width: 500px; padding-left: 130px;"></div>
+                            <div class="center" id="cashier1"><img src="images/Cashier.gif"></div>
                             <div class="center" id="cashier2" hidden="true"><img src="images/Nice_Day_Cashier.gif"></div><br/>
                         </td>
                     </tr>
@@ -88,6 +88,6 @@ document.getElementById("table").innerHTML = array;</script>
                     $('#cashier2').toggle();
                 }
         </script>
-                
+
     </body>
 </html>
